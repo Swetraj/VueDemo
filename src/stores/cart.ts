@@ -1,19 +1,8 @@
 import { computed, ref } from 'vue'
 import { defineStore } from 'pinia'
+import type { ProductDetails } from '@/api/data'
 
 export type RemoveFunction = (id: number) => void
-
-export type ProductDetails = {
-  id: number
-  image: string
-  title: string
-  price: number
-  rating: {
-    rate: number
-    count: number
-  }
-  description: string
-}
 
 export const useCartStore = defineStore('cart', () => {
   const cart = ref<ProductDetails[]>([])

@@ -2,7 +2,7 @@
 import IconAddToCart from './icons/IconAddToCart.vue'
 import { RouterLink } from 'vue-router'
 import IconStar from './icons/IconStar.vue'
-import type { ProductDetails } from '@/stores/cart'
+import type { ProductDetails } from '@/api/data'
 
 type AddFunction = (item: ProductDetails) => void
 

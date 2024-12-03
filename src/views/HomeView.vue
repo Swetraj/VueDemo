@@ -3,7 +3,7 @@ import { ref, onMounted } from 'vue'
 import CardItem from '@/components/CardItem.vue'
 import NavBar from '@/components/NavBar.vue'
 import { useCartStore } from '@/stores/cart'
-import { getAllData } from '@/api/data'
+import { getCountData } from '@/api/data'
 
 type Item = {
   id: number
@@ -29,12 +29,8 @@ function showMore() {
 }
 
 const loadData = async () => {
-  try {
-    const response = await getAllData(postCount.value)
-    posts.value = response
-  } catch (e) {
-    console.log('Error fetching summary from REST API : ' + e)
-  }
+  const response = await getCountData(postCount.value)
+  posts.value = response
 }
 
 onMounted(() => {
