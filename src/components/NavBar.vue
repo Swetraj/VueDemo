@@ -21,7 +21,7 @@ function toggleCart() {
         <RouterLink to="/" title="" class="mr-4">
           <img
             class="block w-auto h-8"
-            src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/logo-full.svg"
+            src="http://aayulogic.com/_nuxt/img/aayulogic-main.ef7e693.svg"
             alt=""
           />
         </RouterLink>
