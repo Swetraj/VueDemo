@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { useCartStore, type ProductDetails } from '@/stores/cart'
+import { type ProductDetails } from '@/api/data'
 import { RouterLink } from 'vue-router'
 import IconCrossRed from './icons/IconCrossRed.vue'
+import { useCartStore } from '@/stores/cart'
 
 const props = defineProps<{
   item: ProductDetails

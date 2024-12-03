@@ -6,14 +6,25 @@ import SearchBody from './SearchBody.vue'
 
 const searchClicked = ref(false)
 const allData = ref<ProductDetails[]>()
+const searchData = ref<ProductDetails[]>()
+const searchQuery = ref<string>()
 
-const toggleSearch = () => {
-  searchClicked.value = !searchClicked.value
+const openSearch = () => {
+  searchClicked.value = true
 }
-
+const closeSearch = () => {
+  searchClicked.value = false
+}
 const loadData = async () => {
   const response = await getAllData()
   allData.value = response
+}
+
+const handleInput = (event: Event) => {
+  const target = event.target as HTMLInputElement
+  const value = target.value.toLowerCase()
+  searchQuery.value = value
+  searchData.value = allData.value?.filter((item) => item.title.toLowerCase().includes(value))
 }
 
 onMounted(() => {
@@ -22,7 +33,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <form class="relative">
+  <div
+    v-if="searchClicked"
+    class="absolute top-0 left-0 z-0 w-full h-full"
+    @click="closeSearch"
+  ></div>
+  <form class="relative z-10">
     <div>
       <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only"
         >Search</label
@@ -33,8 +49,9 @@ onMounted(() => {
         </div>
         <input
           type="search"
-          @focusout="toggleSearch"
-          @focusin="toggleSearch"
+          @input="handleInput"
+          @focusin="openSearch"
+          :value="searchQuery"
           class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
           placeholder="Search"
           required
@@ -47,8 +64,8 @@ onMounted(() => {
         </button>
       </div>
     </div>
-    <div v-if="searchClicked" class="absolute block top-13 right-0">
-      <SearchBody />
+    <div v-if="searchClicked" class="absolute z-10 block top-13 left-0 w-full">
+      <SearchBody :list="searchData" />
     </div>
   </form>
 </template>

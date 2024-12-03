@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import CartPageItem from '@/components/CartPageItem.vue'
+import IconArrow from '@/components/icons/IconArrow.vue'
 import NavBar from '@/components/NavBar.vue'
 import { useCartStore } from '@/stores/cart'
 import { storeToRefs } from 'pinia'
+import { RouterLink } from 'vue-router'
 
 const store = useCartStore()
 const { cart, totalPrice } = storeToRefs(store)
@@ -54,28 +56,13 @@ const { cart, totalPrice } = storeToRefs(store)
 
             <div class="flex items-center justify-center gap-2">
               <span class="text-sm font-normal text-gray-500"> or </span>
-              <a
-                href="#"
-                title=""
+              <RouterLink
+                to="/"
                 class="inline-flex items-center gap-2 text-sm font-medium text-blue-700 underline hover:no-underline"
               >
                 Continue Shopping
-                <svg
-                  class="h-5 w-5"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 12H5m14 0-4 4m4-4-4-4"
-                  />
-                </svg>
-              </a>
+                <IconArrow />
+              </RouterLink>
             </div>
           </div>
         </div>

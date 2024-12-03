@@ -3,7 +3,7 @@ import { getDataById } from '@/api/data'
 import IconAddToCart from '@/components/icons/IconAddToCart.vue'
 import IconStar from '@/components/icons/IconStar.vue'
 import NavBar from '@/components/NavBar.vue'
-import { onBeforeMount, ref } from 'vue'
+import { onMounted, onUpdated, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import type { ProductDetails } from '@/api/data'
 import { useCartStore } from '@/stores/cart'
@@ -17,8 +17,10 @@ const loadData = async () => {
   const response = await getDataById(route.params.id)
   post.value = response
 }
-
-onBeforeMount(() => {
+onMounted(() => {
+  loadData()
+})
+onUpdated(() => {
   loadData()
 })
 </script>

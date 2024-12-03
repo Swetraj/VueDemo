@@ -34,10 +34,7 @@ const link = '/products/' + String(id)
         >
         <div class="mt-2 flex items-center gap-2">
           <div class="flex items-center">
-            <IconStar />
-            <IconStar />
-            <IconStar />
-            <IconStar />
+            <div v-for="index in Math.floor(rating.rate)" v-bind:key="index"><IconStar /></div>
           </div>
           <p class="text-sm font-medium text-gray-900">{{ rating.rate }}</p>
           <p class="text-sm font-medium text-gray-500 dark:text-gray-600">({{ rating.count }})</p>
