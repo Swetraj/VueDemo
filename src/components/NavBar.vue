@@ -26,7 +26,7 @@ function toggleCart() {
           />
         </RouterLink>
 
-        <div class="mx-auto sm:max-w-md md:w-full">
+        <div class="hidden sm:block mx-auto sm:max-w-md md:w-full">
           <SearchBar />
         </div>
         <div
@@ -53,6 +53,9 @@ function toggleCart() {
           </button>
           <CartBody v-if="cartOpen" />
         </div>
+      </div>
+      <div class="sm:hidden mx-auto mt-4 sm:max-w-md md:w-full">
+        <SearchBar />
       </div>
     </div>
   </nav>
