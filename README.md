@@ -96,7 +96,7 @@ src/
 ├── components/         # Reusable Vue components
 ├── views/              # Page-level components (Home, Product, Cart)
 ├── router/             # Vue Router configuration
-├── store/             # Pinia Store
+├── store/              # Pinia Store
 ├── App.vue             # Root component
 ├── main.ts             # Entry point of the app
 ```
