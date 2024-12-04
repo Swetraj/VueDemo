@@ -32,7 +32,7 @@ onUpdated(() => {
   </header>
   <section class="py-8 bg-white md:py-16 antialiased">
     <div class="max-w-screen-xl px-4 mx-auto 2xl:px-0">
-      <div class="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
+      <div v-if="post" class="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
         <div class="shrink-0 max-w-md lg:max-w-lg mx-auto">
           <img class="w-full" :src="post?.image" alt="" />
         </div>
@@ -82,6 +82,7 @@ onUpdated(() => {
           </p>
         </div>
       </div>
+      <div v-else>Loading...</div>
     </div>
   </section>
 </template>
