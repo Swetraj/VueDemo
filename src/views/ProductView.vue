@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { getDataById } from '@/api/data'
 import IconAddToCart from '@/components/icons/IconAddToCart.vue'
-import IconStar from '@/components/icons/IconStar.vue'
 import NavBar from '@/components/NavBar.vue'
 import { onMounted, onUpdated, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import type { ProductDetails } from '@/api/data'
 import { useCartStore } from '@/stores/cart'
+import IconStar from '@/components/icons/IconStar.vue'
 
 const route = useRoute()
 const store = useCartStore()
@@ -17,6 +17,7 @@ const loadData = async () => {
   const response = await getDataById(route.params.id)
   post.value = response
 }
+
 onMounted(() => {
   loadData()
 })
@@ -44,10 +45,8 @@ onUpdated(() => {
             <p class="text-2xl font-extrabold text-gray-900 sm:text-3xl">{{ post?.price }}</p>
 
             <div class="flex items-center gap-2 mt-2 sm:mt-0">
-              <div class="flex items-center gap-1">
-                <IconStar />
-                <IconStar />
-                <IconStar />
+              <div v-if="post?.rating.rate" class="flex items-center gap-1">
+                <IconStar v-for="index in Math.floor(post?.rating.rate)" v-bind:key="index" />
               </div>
               <p class="text-sm font-medium leading-none text-gray-500">{{ post?.rating.rate }}</p>
               <a

@@ -29,8 +29,13 @@ function toggleCart() {
         <div class="mx-auto sm:max-w-md md:w-full">
           <SearchBar />
         </div>
+        <div
+          v-if="cartOpen"
+          class="absolute top-0 left-0 z-10 w-full h-full"
+          @click="toggleCart"
+        ></div>
 
-        <div class="relative flex items-center lg:space-x-2">
+        <div class="relative flex items-center z-20 lg:space-x-2">
           <button
             @click="toggleCart"
             type="button"
