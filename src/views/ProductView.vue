@@ -41,6 +41,12 @@ onUpdated(() => {
           <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl">
             {{ post?.title }}
           </h1>
+          <div class="my-2">
+            <span
+              class="bg-gray-200 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded"
+              >{{ post?.category }}</span
+            >
+          </div>
           <div class="mt-4 sm:items-center sm:gap-4 sm:flex">
             <p class="text-2xl font-extrabold text-gray-900 sm:text-3xl">{{ post?.price }}</p>
 

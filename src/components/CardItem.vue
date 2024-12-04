@@ -12,7 +12,7 @@ const props = defineProps<{
 }>()
 
 const { item, addToCart } = props
-const { id, image, title, price, description, rating } = item
+const { id, image, title, price, description, rating, category } = item
 const link = '/products/' + String(id)
 </script>
 
@@ -37,7 +37,12 @@ const link = '/products/' + String(id)
             <div v-for="index in Math.floor(rating.rate)" v-bind:key="index"><IconStar /></div>
           </div>
           <p class="text-sm font-medium text-gray-900">{{ rating.rate }}</p>
-          <p class="text-sm font-medium text-gray-500 dark:text-gray-600">({{ rating.count }})</p>
+          <p class="text-sm font-medium text-gray-500">({{ rating.count }})</p>
+        </div>
+        <div class="my-2">
+          <span class="bg-gray-200 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded">{{
+            category
+          }}</span>
         </div>
 
         <div class="text-gray-900 line-clamp-3">

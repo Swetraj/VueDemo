@@ -32,6 +32,10 @@ This project is a responsive single-page application (SPA) built using **Vue.js*
 
 - Reusable components for the navigation bar, cards, icons.
 
+### **4. Dynamic Search**
+
+- Search Bar searches both title and category
+
 ---
 
 ## **Technologies Used**

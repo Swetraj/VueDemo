@@ -3,23 +3,11 @@ import { ref, onMounted } from 'vue'
 import CardItem from '@/components/CardItem.vue'
 import NavBar from '@/components/NavBar.vue'
 import { useCartStore } from '@/stores/cart'
-import { getCountData } from '@/api/data'
-
-type Item = {
-  id: number
-  image: string
-  title: string
-  price: number
-  rating: {
-    rate: number
-    count: number
-  }
-  description: string
-}
+import { getCountData, type ProductDetails } from '@/api/data'
 
 const store = useCartStore()
 
-const posts = ref<Item[]>()
+const posts = ref<ProductDetails[]>()
 
 const postCount = ref(8)
 

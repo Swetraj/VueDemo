@@ -3,6 +3,7 @@ export type ProductDetails = {
   image: string
   title: string
   price: number
+  category: string
   rating: {
     rate: number
     count: number

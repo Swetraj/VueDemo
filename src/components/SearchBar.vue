@@ -8,6 +8,7 @@ const searchClicked = ref(false)
 const allData = ref<ProductDetails[]>()
 const searchData = ref<ProductDetails[]>()
 const searchQuery = ref<string>()
+const isQueryEmpty = ref(false)
 
 const openSearch = () => {
   searchClicked.value = true
@@ -24,7 +25,16 @@ const handleInput = (event: Event) => {
   const target = event.target as HTMLInputElement
   const value = target.value.toLowerCase()
   searchQuery.value = value
-  searchData.value = allData.value?.filter((item) => item.title.toLowerCase().includes(value))
+  if (searchQuery.value == '' || searchQuery.value == ' ') {
+    searchData.value = []
+    isQueryEmpty.value = true
+    return
+  }
+  searchData.value = allData.value?.filter(
+    (item) =>
+      item.title.toLowerCase().includes(value) || item.category.toLowerCase().includes(value),
+  )
+  isQueryEmpty.value = false
 }
 
 onMounted(() => {
@@ -65,7 +75,7 @@ onMounted(() => {
       </div>
     </div>
     <div v-if="searchClicked" class="absolute z-10 block top-13 left-0 w-full">
-      <SearchBody :list="searchData" />
+      <SearchBody :list="searchData" :is-query-empty="isQueryEmpty" />
     </div>
   </form>
 </template>
